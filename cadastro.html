@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        body{
+            padding: 0;
+            margin:0;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            font-family: "Montserrat", sans-serif;
+          font-optical-sizing: auto;
+          flex-direction: column;
+          align-items: center;
+          
+
+        }
+        .sign-container{
+            border-radius: 15px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: rgb(27, 27, 27);
+            width: 60%;
+            height: 100%;
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            color: white;
+        }
+        .logo{
+            width: 100%;
+            align-items: center;
+            align-content: center;
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            margin-bottom: 40px;
+        }
+        .logo-image{
+            width: 10%;
+        }
+        .email{
+            display: flex;
+            flex-direction: column;
+            font-size: 8px;
+            width: 50%;
+            height: 12%;
+            font-size: 90%;
+        }
+        .senha{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            font-size: 90%;
+            margin-top: 5px;
+        }
+        input{
+            all:unset;
+            margin-bottom: 5px;
+            display: block;
+            width: 100%;
+            height: 90%;
+            font-size: 15px;
+
+            margin-top: 2px;
+            outline: rgb(182, 182, 182) solid 1px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button{
+            all:unset;
+            padding: 7px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            background-color: rgba(93,23,235,255);
+            border-radius: 20px;
+            width: 40%;
+            text-align: center;
+
+        }
+        .cadastrese-container{
+            font-size: 70%;
+            font-weight: 500;
+        }
+        .cadastrese{
+            text-decoration: underline;
+        }
+        h1{
+            color: rgba(93,23,235,255);
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img class="logo-image" src="img/Spotifey-removebg-preview.png" alt="">
+    </div>
+    <div class="sign-container">
+        <h1>Cadastro</h1>
+        <div class="email">
+            <div>Insira o usuário</div>
+            <input type="text" placeholder="usuário" id="user">
+        </div>
+        <div class="email">
+            <div>Insira o email</div>
+            <input type="text" placeholder="email" id="email">
+        </div>
+        <div class="senha">
+            <div>Senha</div>
+            <input id="senha" class="senha-input"type="text" placeholder="senha">
+        </div>
+        <div class="senha">
+            <div>Confirmar senha</div>
+            <input id="confirmar-senha"class="senha-input"type="text" placeholder="senha">
+        </div>
+        <span id="erro"></span>
+        <button id="submit" onclick="cadastrarUsuario()">
+            Avançar
+        </button>
+
+        <div class="cadastrese-container">Já tem uma conta? <a  href="login.html"><span class="cadastrese">Login</span></a></div>
+        
+    </div>
+    <script src="script/cadastro.js"></script>
+</body>
+</html>

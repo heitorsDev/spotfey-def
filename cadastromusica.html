@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #lista-musicas{
+        display: flex;
+        padding: 10vh;
+        gap: 15vh;
+    }
+    </style>
+</head>
+<body>
+    <form onsubmit="cadastrarMusica(
+    document.getElementById('titulo').value,
+    document.getElementById('artista').value,
+    document.getElementById('genero').value,
+    document.getElementById('duracao').value,
+    document.getElementById('link').value);
+    return false;">
+        <input type="text" id="titulo" placeholder="Título da música" required>
+        <input type="text" id="artista" placeholder="Artista" required>
+        <input type="text" id="genero" placeholder="Gênero" required>
+        <input type="number" id="duracao" placeholder="Duração (min)" required>
+        <input type="url" id="link" placeholder="Link da música" required>
+        <button type="submit">Cadastrar Música</button>
+        <button onclick="location.href='main.html'">Voltar ao início</button>
+    </form>
+    <script src="script2.js"></script>
+    <div id="lista-musicas"></div>
+
+</body>
+</html>

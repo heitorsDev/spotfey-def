@@ -1,0 +1,356 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>main page</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap");
+      /* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
+      /** {
+  scrollbar-width: thin;
+  scrollbar-color: #7153EB #474747;
+}*/
+
+      /* Chrome, Edge and Safari */
+      *::-webkit-scrollbar {
+        height: 10px;
+        width: 10px;
+      }
+
+      *::-webkit-scrollbar-track {
+        border-radius: 5px;
+        background-color: #474747;
+      }
+
+      *::-webkit-scrollbar-track:hover {
+        background-color: #3b3b3b;
+      }
+
+      *::-webkit-scrollbar-track:active {
+        background-color: #8a8a8a;
+      }
+
+      *::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: #7153eb;
+      }
+
+      *::-webkit-scrollbar-thumb:hover {
+        background-color: #6519ff;
+      }
+
+      *::-webkit-scrollbar-thumb:active {
+        background-color: #6519ff;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: black;
+        color: white;
+        margin: 0;
+        padding: 0;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        padding: 1%;
+      }
+
+      .search-container,
+      .library-container {
+        flex-grow: 1;
+        margin: 0 1rem;
+      }
+
+      .search-input,
+      .library-input {
+        font-family: "Montserrat", sans-serif;
+        width: 100%;
+        background-color: #191919;
+        color: white;
+        border-radius: 9999px;
+        padding: 0.5rem 1rem;
+        border: none;
+      }
+
+      .main {
+        background-color: #191919;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section-title {
+        font-weight: 600;
+        text-align: center;
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .recommendations-container {
+        display: flex;
+        overflow-x: auto;
+        /* Permite o scroll horizontal */
+        gap: 20px;
+        width: 80%;
+        margin-bottom: 2rem;
+        padding: 10px 0;
+        /* Para adicionar espaço no topo e na base do scroll */
+      }
+
+      .artist-card {
+        flex: 0 0 200px;
+        /* Largura fixa para os cartões */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .artist-image {
+        border-radius: 9999px;
+        width: 6rem;
+        height: 6rem;
+      }
+
+      .logo {
+        width: 5%;
+        margin-top: 10px;
+      }
+
+      #lista-musicas {
+        display: flex;
+        gap: 15vh;
+      }
+
+      a {
+        all: unset;
+        padding: 30px;
+      }
+
+      #lista-musicas {
+        display: flex;
+        flex-wrap: wrap;
+        /* Allow multiple rows */
+        gap: 20px;
+        margin-top: 2rem;
+        /* Add some space above the music list */
+      }
+
+      .musica-card {
+        background-color: #2a2a2a;
+        /* Background color for each music card */
+        border-radius: 8px;
+        padding: 1rem;
+        width: 200px;
+        /* Fixed width for each card */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        /* Subtle shadow for depth */
+      }
+
+      .musica-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem;
+        /* Margin adjustments */
+      }
+
+      .musica-artist,
+      .musica-genre,
+      .musica-duration {
+        margin: 0.25rem 0;
+        /* Spacing between lines */
+      }
+
+      .musica-link {
+        display: inline-block;
+        margin-top: 0.5rem;
+        padding: 0.5rem 1rem;
+        background-color: #7153eb;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        /* Remove underline */
+      }
+
+      .musica-link:hover {
+        background-color: #6519ff;
+        /* Hover effect */
+      }
+    </style>
+  </head>
+
+  <body>
+    <img src="img/Spotifey-removebg-preview.png" class="logo" alt="" />
+    <header class="header">
+      <div class="logo">
+        <i class="fas fa-music"></i>
+      </div>
+      <div class="search-container">
+        <input
+          class="search-input"
+          placeholder="Adicionar músicas"
+          type="text"
+        />
+        <div class="search-icon">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+      <div class="library-container">
+        <input class="library-input" placeholder="Sua biblioteca" type="text" />
+        <div class="add-icon">
+          <i class="fas fa-plus"></i>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <h2 class="section-title">Também você possa gostar</h2>
+      <div class="recommendations-container">
+        <a href="https://www.youtube.com/@VEIGH">
+          <div class="artist-card">
+            <img
+              alt=""
+              class="artist-image"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-MCIM2opAEXXM8DXF1BdJqwh5q4Lb81Vdrw&s"
+            />
+            <p class="artist-name">Veigh</p>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/@30PRAUM">
+          <div class="artist-card">
+            <img
+              alt=""
+              class="artist-image"
+              src="https://i.scdn.co/image/ab67616d0000b2736bf9cfc769a0dd66fc1414e4"
+            />
+            <p class="artist-name">30PRAUM</p>
+          </div>
+        </a>
+       
+        <a href="https://www.youtube.com/channel/UCmkSzYG4ykYKFE4Ow0030zw">
+          <div class="artist-card">
+            <img
+              alt=""
+              class="artist-image"
+              src="https://brasilia.deboa.com/wp-content/uploads/2020/10/Menos-%C3%A9-Mais_site-deboa-brasilia.jpg"
+            />
+            <p class="artist-name">Grupo Menos É Mais</p>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/@TravisScottXX">
+          <div class="artist-card">
+            <img
+              alt=""
+              class="artist-image"
+              src="https://i.scdn.co/image/ab67616d0000b2736cfd9a7353f98f5165ea6160"
+            />
+            <p class="artist-name">Travis Scott</p>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/@BKttlapa">
+          <div class="artist-card">
+            <img
+              alt=""
+              class="artist-image"
+              src="https://i.scdn.co/image/ab6761610000e5ebffbb9a9d1d157a08ba59082d"
+            />
+            <p class="artist-name">Bk</p>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/channel/UCTihF8dW95hPDTSyxbJVczA">
+          <div class="artist-card">
+            <img
+              alt=""
+              class="artist-image"
+              src="https://cdns-images.dzcdn.net/images/artist/e4820ad3601ce2b785d897ed12fd1aae/500x500.jpg"
+            />
+            <p class="artist-name">Turma do Pagode</p>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/channel/UCOh5E8ugtGCq3D35ApQLmQw">
+          <div class="artist-card">
+            <img
+              alt=""
+              class="artist-image"
+              src="https://i.scdn.co/image/ab67616d0000b27394b4adb8b0a13ed6d8ebd362"
+            />
+            <p class="artist-name">Tião Carreiro e Pardinho</p>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/channel/UCfM3zsQsOnfWNUppiycmBuw">
+          <div class="artist-card">
+            <img
+              alt=""
+              class="artist-image"
+              src="https://i.scdn.co/image/ab6761610000e5eba00b11c129b27a88fc72f36b"
+            />
+            <p class="artist-name">Eminem</p>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/@JuiceWRLD">
+          <div class="artist-card">
+            <img
+              alt=""
+              class="artist-image"
+              src="https://i.scdn.co/image/ab6761610000e5eb1908e1a8b79abf71d5598944"
+            />
+            <p class="artist-name">Juice Wrld</p>
+          </div>
+        </a>
+      </div>
+      <div id="lista-musicas"></div>
+    </main>
+    <script>
+      let usuarioLogado = sessionStorage.getItem("usuarioLogado");
+      if (!usuarioLogado) {
+        window.location.href = "login.html";
+      }
+
+      function logout() {
+        sessionStorage.removeItem("usuarioLogado");
+        window.location.href = "login.html";
+      }
+
+      function exibirMusicas() {
+        const listaMusicas = JSON.parse(localStorage.getItem("musicas")) || [];
+        const containerMusicas = document.getElementById("lista-musicas");
+
+        containerMusicas.innerHTML = "";
+
+        listaMusicas.forEach((musica) => {
+          const musicaElement = document.createElement("div");
+          musicaElement.className = "musica-card"; 
+          musicaElement.innerHTML = `
+                    <h3 class="musica-title">${musica.titulo}</h3>
+                    <p class="musica-artist">Artista: <strong>${musica.artista}</strong></p>
+                    <p class="musica-genre">Gênero: <strong>${musica.genero}</strong></p>
+                    <p class="musica-duration">Duração: <strong>${musica.duracao} minutos</strong></p>
+                    <a class="musica-link" href="${musica.link}">Ouvir</a>
+                    <button onclick="curtir('${musica.titulo}')">curtir</button>
+                `;
+          containerMusicas.appendChild(musicaElement);
+        });
+      }
+      exibirMusicas();
+      let usuarios = JSON.parse(localStorage.getItem("usuarios"));
+
+      let usuarioExistente= usuarios.find(
+        (usuario, i) => usuario.user === usuarioLogado
+      );
+      const index = usuarios.indexOf(usuarioExistente)
+      console.log(index)
+      function curtir(titulo) {
+        if (usuarioExistente.curtidas.includes(titulo)){
+            return
+        }
+        usuarioExistente.curtidas.push(titulo)
+        usuarios[index] = usuarioExistente
+        console.log(usuarios)
+        localStorage.setItem("usuarios", JSON.stringify(usuarios))
+      }
+    </script>
+  </body>
+</html>

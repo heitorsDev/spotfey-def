@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Músicas Curtidas e Playlists</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap");
+      *::-webkit-scrollbar {
+        height: 10px;
+        width: 10px;
+      }
+      *::-webkit-scrollbar-track {
+        border-radius: 5px;
+        background-color: #474747;
+      }
+      *::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: #7153eb;
+      }
+      .logo-image{
+            width: 10%;
+        }
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: black;
+        color: white;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        padding: 1%;
+      }
+      .section-title {
+        font-weight: 600;
+        text-align: center;
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+      }
+      .container {
+        background-color: #191919;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .list-container {
+        display: flex;
+        gap: 20px;
+        width: 80%;
+      }
+      .musica-card,
+      .playlist-card {
+        background-color: #2a2a2a;
+        border-radius: 8px;
+        padding: 1rem;
+        width: 100%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .musica-title,
+      .playlist-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem;
+      }
+      .musica-artist,
+      .musica-genre,
+      .musica-duration,
+      .playlist-desc {
+        margin: 0.25rem 0;
+      }
+      .musica-link,
+      .playlist-link {
+        display: inline-block;
+        margin-top: 0.5rem;
+        padding: 0.5rem 1rem;
+        background-color: #7153eb;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+      .musica-link:hover,
+      .playlist-link:hover {
+        background-color: #6519ff;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <img src="img/Spotifey-removebg-preview.png" class="logo-image" alt="" />
+      <h1>Músicas Curtidas e Playlists</h1>
+    </header>
+    <main class="container">
+      <section>
+        <h2 class="section-title">Músicas Curtidas</h2>
+        <div id="curtidas-container" class="list-container"></div>
+      </section>
+      <section>
+        <h2 class="section-title">Playlists</h2>
+        <div id="playlists-container" class="list-container"></div>
+      </section>
+    </main>
+    <script>
+      let usuarioLogado = sessionStorage.getItem("usuarioLogado");
+      if (!usuarioLogado) window.location.href = "login.html";
+      let usuarios = JSON.parse(localStorage.getItem("usuarios"));
+      let usuarioExistente = usuarios.find(
+        (usuario) => usuario.user === usuarioLogado
+      );
+
+      function exibirCurtidas() {
+        const curtidasContainer = document.getElementById("curtidas-container");
+        curtidasContainer.innerHTML = "";
+        const musicas = JSON.parse(localStorage.getItem("musicas"));
+        console.log(musicas)
+        console.log(usuarioExistente.curtidas)
+        usuarioExistente.curtidas.forEach((titulo) => {
+          let musicaExistente = musicas.find(
+            (musica) => musica.titulo === titulo
+          );
+          console.log(musicaExistente)
+          const musicaElement = document.createElement("div");
+          musicaElement.className = "musica-card";
+          musicaElement.innerHTML = `
+          <h3 class="musica-title">${titulo}</h3>
+          <p class="musica-artist">Artista: ${musicaExistente.artista}</p>
+          <a class="musica-link" href="#">Ouvir</a>
+        `;
+          curtidasContainer.appendChild(musicaElement);
+        });
+      }
+
+      function exibirPlaylists() {
+        const playlistsContainer = document.getElementById(
+          "playlists-container"
+        );
+        playlistsContainer.innerHTML = "";
+        const playlists = usuarioExistente.playlists || [];
+        playlists.forEach((playlist) => {
+          const playlistElement = document.createElement("div");
+          playlistElement.className = "playlist-card";
+          playlistElement.innerHTML = `
+          <h3 class="playlist-title">${playlist.nome}</h3>
+          <p class="playlist-desc">Músicas: ${playlist.musicas.join(", ")}</p>
+          <a class="playlist-link" href="#">Abrir Playlist</a>
+        `;
+          playlistsContainer.appendChild(playlistElement);
+        });
+      }
+      exibirCurtidas();
+      exibirPlaylists();
+    </script>
+  </body>
+</html>
