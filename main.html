@@ -308,49 +308,61 @@
       if (!usuarioLogado) {
         window.location.href = "login.html";
       }
-
+  
       function logout() {
         sessionStorage.removeItem("usuarioLogado");
         window.location.href = "login.html";
       }
-
+  
+      function play(id) {
+        document.getElementById(id).src += "&autoplay=1";
+      }
+  
+      function pause(id) {
+        const video = document.getElementById(id);
+        video.src = video.src.replace("&autoplay=1", "");
+      }
+  
       function exibirMusicas() {
         const listaMusicas = JSON.parse(localStorage.getItem("musicas")) || [];
         const containerMusicas = document.getElementById("lista-musicas");
-
         containerMusicas.innerHTML = "";
-
+  
         listaMusicas.forEach((musica) => {
           const musicaElement = document.createElement("div");
           musicaElement.className = "musica-card"; 
           musicaElement.innerHTML = `
-                    <h3 class="musica-title">${musica.titulo}</h3>
-                    <p class="musica-artist">Artista: <strong>${musica.artista}</strong></p>
-                    <p class="musica-genre">Gênero: <strong>${musica.genero}</strong></p>
-                    <p class="musica-duration">Duração: <strong>${musica.duracao} minutos</strong></p>
-                    <a class="musica-link" href="${musica.link}">Ouvir</a>
-                    <button onclick="curtir('${musica.titulo}')">curtir</button>
-                `;
+            <h3 class="musica-title">${musica.titulo}</h3>
+            <p class="musica-artist">Artista: ${musica.artista}</p>
+            <iframe
+              id="${musica.link}"
+              width="0"
+              height="0"
+              src="${musica.link}"
+              frameborder="0"
+              allow="autoplay"
+              allowfullscreen
+            ></iframe>
+            <button onclick="play('${musica.link}')">Play</button>
+            <button onclick="pause('${musica.link}')">Pause</button>
+          `;
           containerMusicas.appendChild(musicaElement);
         });
       }
+  
       exibirMusicas();
+  
       let usuarios = JSON.parse(localStorage.getItem("usuarios"));
-
-      let usuarioExistente= usuarios.find(
-        (usuario, i) => usuario.user === usuarioLogado
-      );
-      const index = usuarios.indexOf(usuarioExistente)
-      console.log(index)
+      let usuarioExistente = usuarios.find(usuario => usuario.user === usuarioLogado);
+      const index = usuarios.indexOf(usuarioExistente);
+  
       function curtir(titulo) {
-        if (usuarioExistente.curtidas.includes(titulo)){
-            return
+        if (!usuarioExistente.curtidas.includes(titulo)) {
+          usuarioExistente.curtidas.push(titulo);
+          usuarios[index] = usuarioExistente;
+          localStorage.setItem("usuarios", JSON.stringify(usuarios));
         }
-        usuarioExistente.curtidas.push(titulo)
-        usuarios[index] = usuarioExistente
-        console.log(usuarios)
-        localStorage.setItem("usuarios", JSON.stringify(usuarios))
       }
     </script>
   </body>
-</html>
+  </html>

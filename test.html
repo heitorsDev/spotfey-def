@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tocar Áudio do YouTube</title>
+</head>
+<body>
+  <!-- Iframe do YouTube -->
+  <iframe
+    id="youtube-audio"
+    width="0"
+    height="0"
+    src="https://www.youtube.com/embed/Fjy3Gy6odFQ?si=UhACc_bQrcUaRxdT"
+    frameborder="0"
+    allow="autoplay"
+    allowfullscreen
+  ></iframe>
+
+  <!-- Botões de Controle -->
+  <button onclick="playAudio()">Play</button>
+  <button onclick="pauseAudio()">Pause</button>
+
+  <script>
+    const youtubeAudio = document.getElementById("youtube-audio");
+
+    function playAudio() {
+      youtubeAudio.src += "&autoplay=1";
+    }
+
+    function pauseAudio() {
+      youtubeAudio.src = youtubeAudio.src.replace("&autoplay=1", "");
+    }
+  </script>
+</body>
+</html>

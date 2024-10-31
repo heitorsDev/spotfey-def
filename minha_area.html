@@ -1,207 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Músicas Curtidas e Playlists</title>
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap");
-        *::-webkit-scrollbar {
-            height: 10px;
-            width: 10px;
-        }
-        *::-webkit-scrollbar-track {
-            border-radius: 5px;
-            background-color: #474747;
-        }
-        *::-webkit-scrollbar-thumb {
-            border-radius: 5px;
-            background-color: #7153eb;
-        }
-        .logo-image {
-            width: 10%;
-        }
-        body {
-            font-family: "Montserrat", sans-serif;
-            background-color: black;
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            padding: 1%;
-        }
-        .section-title {
-            font-weight: 600;
-            text-align: center;
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-        }
-        .container {
-            background-color: #191919;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .list-container {
-            display: flex;
-            gap: 20px;
-            width: 80%;
-            flex-wrap: wrap;
-        }
-        .musica-card,
-        .playlist-card {
-            background-color: #2a2a2a;
-            border-radius: 8px;
-            padding: 1rem;
-            width: 100%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .musica-title,
-        .playlist-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin: 0 0 0.5rem;
-        }
-        .musica-artist,
-        .musica-genre,
-        .musica-duration,
-        .playlist-desc {
-            margin: 0.25rem 0;
-        }
-        .musica-link,
-        .playlist-link {
-            display: inline-block;
-            margin-top: 0.5rem;
-            padding: 0.5rem 1rem;
-            background-color: #7153eb;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .musica-link:hover,
-        .playlist-link:hover {
-            background-color: #6519ff;
-        }
-        .form-container {
-            margin-top: 2rem;
-            width: 80%;
-        }
-        .form-container input, .form-container select, .form-container button {
-            width: 100%;
-            margin: 0.5rem 0;
-            padding: 0.5rem;
-            border-radius: 5px;
-            border: 1px solid #7153eb;
-            background-color: #2a2a2a;
-            color: white;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap");
+      *::-webkit-scrollbar {
+        height: 10px;
+        width: 10px;
+      }
+      *::-webkit-scrollbar-track {
+        border-radius: 5px;
+        background-color: #474747;
+      }
+      *::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: #7153eb;
+      }
+      .logo-image {
+        width: 10%;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: black;
+        color: white;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        padding: 1%;
+      }
+      .section-title {
+        font-weight: 600;
+        text-align: center;
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+      }
+      .container {
+        background-color: #191919;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .list-container {
+        display: flex;
+        gap: 20px;
+        width: 80%;
+        flex-wrap: wrap;
+      }
+      .musica-card,
+      .playlist-card {
+        background-color: #2a2a2a;
+        border-radius: 8px;
+        padding: 1rem;
+        width: 100%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .musica-title,
+      .playlist-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem;
+      }
+      .musica-artist,
+      .musica-genre,
+      .musica-duration,
+      .playlist-desc {
+        margin: 0.25rem 0;
+      }
+      .musica-link,
+      .playlist-link {
+        display: inline-block;
+        margin-top: 0.5rem;
+        padding: 0.5rem 1rem;
+        background-color: #7153eb;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+      .musica-link:hover,
+      .playlist-link:hover {
+        background-color: #6519ff;
+      }
+      .form-container {
+        margin-top: 2rem;
+        width: 80%;
+      }
+      .form-container input,
+      .form-container select,
+      .form-container button {
+        width: 100%;
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+        border-radius: 5px;
+        border: 1px solid #7153eb;
+        background-color: #2a2a2a;
+        color: white;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header">
-        <img src="img/Spotifey-removebg-preview.png" class="logo-image" alt="" />
-        <h1>Músicas Curtidas e Playlists</h1>
+      <img src="img/Spotifey-removebg-preview.png" class="logo-image" alt="" />
+      <h1>Músicas Curtidas e Playlists</h1>
     </header>
     <main class="container">
-        <section>
-            <h2 class="section-title">Músicas Curtidas</h2>
-            <div id="curtidas-container" class="list-container"></div>
-        </section>
-        <section>
-            <h2 class="section-title">Playlists</h2>
-            <div id="playlists-container" class="list-container"></div>
-        </section>
-        <section class="form-container">
-            <h2 class="section-title">Criar Playlist</h2>
-            <input type="text" id="playlist-name" placeholder="Nome da Playlist" />
-            <select id="musicas-select" multiple>
-                <!-- As opções de músicas serão adicionadas aqui pelo JavaScript -->
-            </select>
-            <button id="create-playlist-button">Criar Playlist</button>
-        </section>
+      <section>
+        <h2 class="section-title">Músicas Curtidas</h2>
+        <div id="curtidas-container" class="list-container"></div>
+      </section>
+      <section>
+        <h2 class="section-title">Playlists</h2>
+        <div id="playlists-container" class="list-container"></div>
+      </section>
+      <section class="form-container">
+        <h2 class="section-title">Criar Playlist</h2>
+        <input type="text" id="playlist-name" placeholder="Nome da Playlist" />
+        <select id="musicas-select" multiple>
+          <!-- As opções de músicas serão adicionadas aqui pelo JavaScript -->
+        </select>
+        <button id="create-playlist-button">Criar Playlist</button>
+      </section>
     </main>
     <script>
-        let usuarioLogado = sessionStorage.getItem("usuarioLogado");
-        if (!usuarioLogado) window.location.href = "login.html";
-        let usuarios = JSON.parse(localStorage.getItem("usuarios"));
-        let usuarioExistente = usuarios.find(usuario => usuario.user === usuarioLogado);
+      let usuarioLogado = sessionStorage.getItem("usuarioLogado");
+      if (!usuarioLogado) window.location.href = "login.html";
+      let usuarios = JSON.parse(localStorage.getItem("usuarios"));
+      let usuarioExistente = usuarios.find(
+        (usuario) => usuario.user === usuarioLogado
+      );
 
-        function exibirCurtidas() {
-            const curtidasContainer = document.getElementById("curtidas-container");
-            curtidasContainer.innerHTML = "";
-            const musicas = JSON.parse(localStorage.getItem("musicas"));
-            usuarioExistente.curtidas.forEach(titulo => {
-                let musicaExistente = musicas.find(musica => musica.titulo === titulo);
-                const musicaElement = document.createElement("div");
-                musicaElement.className = "musica-card";
-                musicaElement.innerHTML = `
-                    <h3 class="musica-title">${titulo}</h3>
-                    <p class="musica-artist">Artista: ${musicaExistente.artista}</p>
-                    <a class="musica-link" href="#">Ouvir</a>
-                `;
-                curtidasContainer.appendChild(musicaElement);
-            });
-        }
+      function play(iframeId) {
+        document.getElementById(iframeId).src += "&autoplay=1";
+      }
+      
+      function pause(iframeId) {
+        document.getElementById(iframeId).src = document
+          .getElementById(iframeId)
+          .src.replace("&autoplay=1", "");
+      }
 
-        function exibirPlaylists() {
-            const playlistsContainer = document.getElementById("playlists-container");
-            playlistsContainer.innerHTML = "";
-            const playlists = usuarioExistente.playlists || [];
-            playlists.forEach(playlist => {
-                const playlistElement = document.createElement("div");
-                let musicasDOM = ""
-                playlist.musicas.forEach((musica) => {
-                  let musicaExistente = JSON.parse(localStorage.getItem("musicas")).find(musicaa => musicaa.titulo === musica)
-                  console.log(musicaExistente)
-                  musicasDOM+=`<h3 class="musica-title">${musica}</h3>
-                    <p class="musica-artist">Artista: ${musicaExistente.artista}</p>
-                    <a class="musica-link" href="#">Ouvir</a>`
-                })
-                playlistElement.className = "playlist-card";
-                playlistElement.innerHTML = `
-                    <h3 class="playlist-title">${playlist.nome}</h3>
-                    <p class="playlist-desc">Músicas: ${musicasDOM}</p>
-                `;
-                playlistsContainer.appendChild(playlistElement);
-            });
-        }
+      function exibirCurtidas() {
+        const curtidasContainer = document.getElementById("curtidas-container");
+        curtidasContainer.innerHTML = "";
+        const musicas = JSON.parse(localStorage.getItem("musicas"));
+        usuarioExistente.curtidas.forEach((titulo) => {
+          let musicaExistente = musicas.find(
+            (musica) => musica.titulo === titulo
+          );
+          const musicaElement = document.createElement("div");
+          musicaElement.className = "musica-card";
+          musicaElement.innerHTML = `
+  <h3 class="musica-title">${titulo}</h3>
+  <p class="musica-artist">Artista: ${musicaExistente.artista}</p>
+  <iframe
+    id="${musicaExistente.link}"
+    width="0"
+    height="0"
+    src="${musicaExistente.link}"
+    frameborder="0"
+    allow="autoplay"
+    allowfullscreen
+  ></iframe>
+  <button onclick="play('${musicaExistente.link}')">play</button>
+  <button onclick="pause('${musicaExistente.link}')">pause</button>
+`;
 
-        function populateMusicasSelect() {
-            const musicas = JSON.parse(localStorage.getItem("musicas"));
-            const selectElement = document.getElementById("musicas-select");
-            musicas.forEach(musica => {
-                const option = document.createElement("option");
-                option.value = musica.titulo;
-                option.textContent = musica.titulo;
-                selectElement.appendChild(option);
-            });
-        }
+          curtidasContainer.appendChild(musicaElement);
+        });
+      }
 
-        document.getElementById("create-playlist-button").addEventListener("click", function() {
-            const playlistName = document.getElementById("playlist-name").value;
-            const selectedMusicas = Array.from(document.getElementById("musicas-select").selectedOptions).map(option => option.value);
-            if (playlistName && selectedMusicas.length) {
-                const newPlaylist = {
-                    nome: playlistName,
-                    musicas: selectedMusicas
-                };
-                usuarioExistente.playlists.push(newPlaylist);
-                localStorage.setItem("usuarios", JSON.stringify(usuarios));
-                exibirPlaylists();
-                document.getElementById("playlist-name").value = '';
-                document.getElementById("musicas-select").selectedIndex = -1
-            } else {
-                alert("Por favor, preencha o nome da playlist e selecione pelo menos uma música.");
-            }
+      function exibirPlaylists() {
+        const playlistsContainer = document.getElementById(
+          "playlists-container"
+        );
+        playlistsContainer.innerHTML = "";
+        const playlists = usuarioExistente.playlists || [];
+
+        playlists.forEach((playlist) => {
+          const playlistElement = document.createElement("div");
+          let musicasDOM = "";
+
+          playlist.musicas.forEach((musica) => {
+            let musicaExistente = JSON.parse(
+              localStorage.getItem("musicas")
+            ).find((musicaa) => musicaa.titulo === musica);
+
+            musicasDOM += `
+        <h3 class="musica-title">${musica}</h3>
+        <p class="musica-artist">Artista: ${musicaExistente.artista}</p>
+        <iframe
+          id="${musicaExistente.link}"
+          width="0"
+          height="0"
+          src="${musicaExistente.link}"
+          frameborder="0"
+          allow="autoplay"
+          allowfullscreen
+        ></iframe>
+        <button onclick="play('${musicaExistente.link}')">play</button>
+        <button onclick="pause('${musicaExistente.link}')">pause</button>
+      `;
+          });
+
+          playlistElement.className = "playlist-card";
+          playlistElement.innerHTML = `
+      <h3 class="playlist-title">${playlist.nome}</h3>
+      <div class="playlist-desc">Músicas: ${musicasDOM}</div>
+    `;
+
+          playlistsContainer.appendChild(playlistElement);
+        });
+      }
+
+      function populateMusicasSelect() {
+        const musicas = JSON.parse(localStorage.getItem("musicas"));
+        const selectElement = document.getElementById("musicas-select");
+        musicas.forEach((musica) => {
+          const option = document.createElement("option");
+          option.value = musica.titulo;
+          option.textContent = musica.titulo;
+          selectElement.appendChild(option);
+        });
+      }
+
+      document
+        .getElementById("create-playlist-button")
+        .addEventListener("click", function () {
+          const playlistName = document.getElementById("playlist-name").value;
+          const selectedMusicas = Array.from(
+            document.getElementById("musicas-select").selectedOptions
+          ).map((option) => option.value);
+          if (playlistName && selectedMusicas.length) {
+            const newPlaylist = {
+              nome: playlistName,
+              musicas: selectedMusicas,
+            };
+            usuarioExistente.playlists.push(newPlaylist);
+            localStorage.setItem("usuarios", JSON.stringify(usuarios));
+            exibirPlaylists();
+            document.getElementById("playlist-name").value = "";
+            document.getElementById("musicas-select").selectedIndex = -1;
+          } else {
+            alert(
+              "Por favor, preencha o nome da playlist e selecione pelo menos uma música."
+            );
+          }
         });
 
-        exibirCurtidas();
-        exibirPlaylists();
-        populateMusicasSelect();
+      exibirCurtidas();
+      exibirPlaylists();
+      populateMusicasSelect();
     </script>
-</body>
+  </body>
 </html>
