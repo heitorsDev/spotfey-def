@@ -32,6 +32,20 @@
         display: flex;
         align-items: center;
         padding: 1%;
+        justify-content: space-between;
+      }
+      .header button {
+        background-color: #7153eb;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+        transition: background-color 0.3s;
+      }
+      .header button:hover {
+        background-color: #6519ff;
       }
       .section-title {
         font-weight: 600;
@@ -101,15 +115,41 @@
         background-color: #2a2a2a;
         color: white;
       }
+      .form-container button {
+        background-color: #7153eb;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .form-container button:hover {
+        background-color: #6519ff;
+      }
+
+      /* Estilização dos botões de play e pause */
+      .musica-card button,
+      .playlist-card button {
+        background-color: #7153eb;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+        transition: background-color 0.3s;
+        margin-top: 0.5rem;
+      }
+
+      .musica-card button:hover,
+      .playlist-card button:hover {
+        background-color: #6519ff;
+      }
     </style>
   </head>
   <body>
     <header class="header">
       <img src="img/Spotifey-removebg-preview.png" class="logo-image" alt="" />
       <h1>Músicas Curtidas e Playlists</h1>
-      <button onclick="
-        window.location.href = 'main.html'
-      ">Home</button>
+      <button onclick="window.location.href = 'main.html'">Home</button>
     </header>
     <main class="container">
       <section>
@@ -131,7 +171,9 @@
     </main>
     <script>
       let usuarioLogado = sessionStorage.getItem("usuarioLogado");
-      if (!usuarioLogado){ window.location.href = "login.html"};
+      if (!usuarioLogado) {
+        window.location.href = "login.html";
+      }
       let usuarios = JSON.parse(localStorage.getItem("usuarios"));
       let usuarioExistente = usuarios.find(
         (usuario) => usuario.user === usuarioLogado
@@ -140,7 +182,7 @@
       function play(iframeId) {
         document.getElementById(iframeId).src += "&autoplay=1";
       }
-      
+
       function pause(iframeId) {
         document.getElementById(iframeId).src = document
           .getElementById(iframeId)
